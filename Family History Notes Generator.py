@@ -117,11 +117,40 @@ def noquotations(str):
     """Remove single quotations in a string."""
     return str.replace("'", "")
 
+def makegrammarnotes(grammar, n, m):
+    gramlist = []  
+    for sentpieces in generate (grammar, n):    
+        sents = nltk.sent_tokenize(' '.join(sentpieces))
+        gramlist.insert(-1,sents)
+        gramfinallist= []
+        if gramfinallist.count(sents) is 0:
+            gramfinallist.extend(gramlist)
+    randomize(gramfinallist)   
+    return gramfinallist[:m]
+
+def makenotes(biglist):
+    """Using a list of all the notes to be included, print output on patienthistories file"""
+    setdoctorsnotes = []
+    setdoctorsnotes.extend(biglist)
+    outfile.write(noquotations(nobrackets(','.join(map(str,setdoctorsnotes)))))
+    outfile.write('\n\n')
+    return nobrackets(noquotations(str(setdoctorsnotes)))
+
+
 outfile = open('patienthistories.txt', 'w')
 outfile.write('Patient History Notes \n\n')
 
 for doctorsnotes1 in range(3):
-    
+
+
+    gram1notes = makegrammarnotes(grammar1, n = 10000, m = 10)
+    gram2notes = makegrammarnotes(grammar2, n = 4, m = 3)
+    gram3notes = makegrammarnotes(grammar3, n = 1, m = 1)
+    gram4notes = makegrammarnotes(grammar4, n = 1, m = 5)
+    gram5notes = makegrammarnotes(grammar5, n = 500, m = 1)
+    gram6notes = makegrammarnotes(grammar6, n = 500, m = 1)
+    gram7notes = makegrammarnotes(grammar7, n = 500, m = 1)
+
     gram1list = []  
     for sentpieces1 in generate (grammar1, n =  10000):    
         sents1 = nltk.sent_tokenize(' '.join(sentpieces1))
@@ -198,17 +227,12 @@ for doctorsnotes1 in range(3):
     randomize(gram7finallist)
     gram7notes = gram7finallist[:1]    
     
+    
     d1 = gram1notes + gram2notes
     d2 = randomize(gram3notes + gram4notes)
     d3 = gram5notes + gram6notes + gram7notes
-    doctorsnotes1 = d1 + d2 +d3
-    setdoctorsnotes = []
-    setdoctorsnotes.extend(doctorsnotes1)
-    outfile.write(noquotations(nobrackets(','.join(map(str,setdoctorsnotes)))))
-    outfile.write('\n\n')
-    print(nobrackets(noquotations(str(setdoctorsnotes))))
-
-
+    biglist = d1 + d2 + d3
+    print(makenotes(biglist))
 
 
 for doctorsnotes2 in range(3):
@@ -245,14 +269,8 @@ for doctorsnotes2 in range(3):
     randomize(gram7finallist)
     gram7notes = gram7finallist[:1]    
     
-    
-    d1 = randomize(gram5notes + gram6notes + gram7notes)
-    doctorsnotes2 = d1
-    setdoctorsnotes = []
-    setdoctorsnotes.extend(doctorsnotes2)
-    outfile.write(noquotations(nobrackets(','.join(map(str,setdoctorsnotes)))))
-    outfile.write('\n\n')
-    print(nobrackets(noquotations(str(setdoctorsnotes))))
+    biglist = randomize(gram5notes + gram6notes + gram7notes)
+    print(makenotes(biglist))
 
 
 outfile.close()
