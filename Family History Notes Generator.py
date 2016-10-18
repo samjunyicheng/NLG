@@ -117,9 +117,10 @@ def noquotations(str):
     """Remove single quotations in a string."""
     return str.replace("'", "")
 
-def makegrammarnotes(grammar, n, m):
+def grammar_notes(grammar, n, m):
+    """Make a list of doctors' notes from a particular grammar."""    
     gramlist = []  
-    for sentpieces in generate (grammar, n):    
+    for sentpieces in generate (grammar, n=n):    
         sents = nltk.sent_tokenize(' '.join(sentpieces))
         gramlist.insert(-1,sents)
         gramfinallist= []
@@ -128,7 +129,7 @@ def makegrammarnotes(grammar, n, m):
     randomize(gramfinallist)   
     return gramfinallist[:m]
 
-def makenotes(biglist):
+def make_notes(biglist):
     """Using a list of all the notes to be included, print output on patienthistories file"""
     setdoctorsnotes = []
     setdoctorsnotes.extend(biglist)
@@ -143,15 +144,81 @@ outfile.write('Patient History Notes \n\n')
 for doctorsnotes1 in range(3):
 
 
-    gram1notes = makegrammarnotes(grammar1, n = 10000, m = 10)
-    gram2notes = makegrammarnotes(grammar2, n = 4, m = 3)
-    gram3notes = makegrammarnotes(grammar3, n = 1, m = 1)
-    gram4notes = makegrammarnotes(grammar4, n = 1, m = 5)
-    gram5notes = makegrammarnotes(grammar5, n = 500, m = 1)
-    gram6notes = makegrammarnotes(grammar6, n = 500, m = 1)
-    gram7notes = makegrammarnotes(grammar7, n = 500, m = 1)
+    gram1notes = grammar_notes(grammar1, n = 10000, m = 10)
+    gram2notes = grammar_notes(grammar2, n = 4, m = 3)
+    gram3notes = grammar_notes(grammar3, n = 1, m = 1)
+    gram4notes = grammar_notes(grammar4, n = 1, m = 5)
+    gram5notes = grammar_notes(grammar5, n = 500, m = 1)
+    gram6notes = grammar_notes(grammar6, n = 500, m = 1)
+    gram7notes = grammar_notes(grammar7, n = 500, m = 1)
 
-    gram1list = []  
+    
+    d1 = gram1notes + gram2notes
+    d2 = randomize(gram3notes + gram4notes)
+    d3 = gram5notes + gram6notes + gram7notes
+    biglist = d1 + d2 + d3
+    print(make_notes(biglist))
+
+
+for doctorsnotes2 in range(3):
+   
+   
+    gram5notes = grammar_notes(grammar5, n = 500, m = 1)
+    gram6notes = grammar_notes(grammar6, n = 500, m = 1)
+    gram7notes = grammar_notes(grammar7, n = 500, m = 1)
+   
+    
+    biglist = randomize(gram5notes + gram6notes + gram7notes)
+    print(make_notes(biglist))
+
+
+outfile.close()
+
+#--------------------------------N-Gram Tagging----------------------------------------------#
+
+"""
+from nltk import word_tokenize
+from nltk.util import ngrams
+
+tokenized_notes = word_tokenize('IceCream.txt')
+ngramnotes = ngrams(tokenized_notes,2)
+print(ngramnotes)
+
+starting_words = bigramnotes.generate(100)[-2:]
+print(' '.join(bigramnotes))
+practicenotes = ngrams(3,tokenized_notes)
+
+starting_words = practicenotes.generate(100)
+newnotes = practicenotes.generate(starting_words)
+print(' '.join(newnotes))
+
+"""
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#-------------------------------Trash Storage---------------------------------#
+
+"""       
+ gram1list = []  
     for sentpieces1 in generate (grammar1, n =  10000):    
         sents1 = nltk.sent_tokenize(' '.join(sentpieces1))
         gram1list.insert(-1,sents1)
@@ -225,18 +292,11 @@ for doctorsnotes1 in range(3):
         if gram7finallist.count(sents7) is 0:
             gram7finallist.extend(gram7list)
     randomize(gram7finallist)
-    gram7notes = gram7finallist[:1]    
-    
-    
-    d1 = gram1notes + gram2notes
-    d2 = randomize(gram3notes + gram4notes)
-    d3 = gram5notes + gram6notes + gram7notes
-    biglist = d1 + d2 + d3
-    print(makenotes(biglist))
+    gram7notes = gram7finallist[:1]
 
 
-for doctorsnotes2 in range(3):
-    
+
+
     gram5list = []  
     for sentpieces5 in generate (grammar5, n =  500):    
         sents5 = nltk.sent_tokenize(' '.join(sentpieces5))  
@@ -267,75 +327,6 @@ for doctorsnotes2 in range(3):
         if gram7finallist.count(sents7) is 0:
             gram7finallist.extend(gram7list)
     randomize(gram7finallist)
-    gram7notes = gram7finallist[:1]    
+    gram7notes = gram7finallist[:1]        
     
-    biglist = randomize(gram5notes + gram6notes + gram7notes)
-    print(makenotes(biglist))
-
-
-outfile.close()
-
-#--------------------------------N-Gram Tagging----------------------------------------------#
-
-"""
-from nltk import word_tokenize
-from nltk.util import ngrams
-
-tokenized_notes = word_tokenize('IceCream.txt')
-ngramnotes = ngrams(tokenized_notes,2)
-print(ngramnotes)
-
-starting_words = bigramnotes.generate(100)[-2:]
-print(' '.join(bigramnotes))
-practicenotes = ngrams(3,tokenized_notes)
-
-starting_words = practicenotes.generate(100)
-newnotes = practicenotes.generate(starting_words)
-print(' '.join(newnotes))
-
-"""
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#-------------------------------Trash Storage---------------------------------#
-
-"""       
-grammar2list = []
-for sentpieces2 in generate (grammar2, n = 2):    
-    sent2 = ' '.join(sentpieces2)
-    sentz2 = nltk.sent_tokenize(sent2)  
-    grammar2list = list(sentz2)
-    random.shuffle(grammar2list)
-    grammar2sents = ' '.join(grammar2list)
-    grammar2sentslist = nltk.sent_tokenize(grammar2sents)
-    print(grammar2sentslist)
-
-grammar3list = []
-for sentpieces3 in generate (grammar3, n = 1):    
-    sent3 = ' '.join(sentpieces3)
-    sentz3 = nltk.sent_tokenize(sent3)
-    grammar3list = list(sentz3)
-    random.shuffle(grammar3list)
-    grammar3sents = ' '.join(grammar3list)
-    grammar3sentslist = nltk.sent_tokenize(grammar3sents)
-    print(grammar3sentslist)
 """
