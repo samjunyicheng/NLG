@@ -78,7 +78,7 @@ ChronicDiag -> 'breast cancer'| 'cvd' | 'hypertension' | 'asthma'
 """)
 
 grammar7 = nltk.CFG.fromstring("""
-S2 -> Diagd'age' Age | Diagd 'in' ApproxAge |  Diagd 'in' ApproxAage 'still living' | Diagd 'in' ApproxAage Died | Diaged 'with'
+S2 -> Diagd 'age' Age | Diagd 'in' ApproxAge |  Diagd 'in' ApproxAage 'still living' | Diagd 'in' ApproxAage Died | Diagd 'with'
 Diagd -> 'Diagnosed' | 'Dxd' | 'Dxed'
 Age -> '70' | '63' | '82' | '54'
 ApproxAge -> '70s' | '80s'| '90s' | 'late 70s' | 'late 60s' | 'late 50s'
@@ -99,6 +99,50 @@ Diag -> 'hypertension' | 'cvd' | 'high bp' | 'cad'
 
 #Each grammar as a separate family member with a list of their relevant medical history
 
+grammar9 = nltk.CFG.fromstring("""
+S3 -> NP VP
+NP -> 'Mom' | 'Mother' | 'Mother and Father'
+VP -> Diagd 'age' Age ',' Diag | Diagd 'in' ApproxAge ',' Diag | Diagd 'in' ApproxAge Diag ',' 'still living' | Diagd 'in' ApproxAge 'with' Diag ',' Died | Diagd 'with' Diag | 'good health'
+Diagd -> 'Diagnosed' | 'Dxd' | 'Dxed'
+Age -> '70' | '63' | '82' | '54'
+ApproxAge -> '70s' | '80s'| '90s' | 'late 70s' | 'late 60s' | 'late 50s'
+Died -> 'deceseased' | 'died'
+Diag -> 'hypertension' | 'cvd' | 'high bp'
+""")
+
+grammar10 = nltk.CFG.fromstring("""
+S3 -> NP VP
+NP -> 'Father'
+VP -> 'has' ChronicDiag | ',' 'history of' ChronicDiag | 'had' AcuteDiag in 'ApproxAge' | Died
+Diagd -> 'Diagnosed' | 'Dxd' | 'Dxed'
+ApproxAge -> '70s' | '80s'| '90s' | 'late 70s' | 'late 60s' | 'late 50s'
+Died -> 'deceased' | 'died'
+ChronicDiag -> 'prostate cancer' |'bladder cancer' | 'hypertension'
+AcuteDiag -> 'heart attack' | 'stroke'
+""")
+
+grammar11 = nltk.CFG.fromstring("""
+S3 -> 'No siblings' | NP VP
+NP -> 'sister' | 'brother' |
+VP -> Diagd 'with' ChronicDiag ',' Age | Diagd 'with' ChronicDiag ',' ApproxAge | ChronicDiag | ChronicDiag
+Diagd -> 'Diagnosed' | 'Dxd' | 'Dxed'
+Age -> '10' | '12' |'15'
+ApproxAge -> '20s'
+ChronicDiag -> 'prostate cancer' |'bladder cancer' | 'hypertension'
+""")
+
+grammar12 = nltk.CFG.fromstring("""
+S3 -> NP VP
+NP -> 'grandparents' | 'grandfather' | 'gm'
+VP -> 'has' Diag | Diagd 'with' Diag in 'ApproxAge' | Died
+Diagd -> 'Diagnosed' | 'Dxd' | 'Dxed'
+ApproxAge -> '70s' | '80s'| '90s' | 'late 70s' | 'late 60s' | 'late 50s'
+Died -> 'deceased' | 'died'
+ChronicDiag -> 'prostate cancer' |'bladder cancer' | 'hypertension'
+Diag -> 'heart attack' | 'stroke'
+""")
+
+
 
 
 
@@ -108,7 +152,7 @@ def randomize(list):
     """Shuffle items in a list."""    
     random.shuffle(list)
     return list
-
+'''
 def nobrackets(str):
     """Remove brackets in a string."""
     return str.replace('[', ' ').replace(']','')
@@ -118,7 +162,8 @@ def noquotations(str):
     return str.replace("'", "")
 
 def grammar_notes(grammar, n, m):
-    """Make a list of doctors' notes from a particular grammar."""    
+    """ Generate n setnences from a particular grammar. Randomize sentences generated
+    and select first m sentences.."""    
     gramlist = []  
     for sentpieces in generate (grammar, n=n):    
         sents = nltk.sent_tokenize(' '.join(sentpieces))
@@ -130,12 +175,14 @@ def grammar_notes(grammar, n, m):
     return gramfinallist[:m]
 
 def make_notes(biglist):
-    """Using a list of all the notes to be included, print output on patienthistories file"""
+    """Using a list of all the notes to be included, print output on patienthistories file.
+    Leave an empty line between each set of doctors' notes."""
     setdoctorsnotes = []
     setdoctorsnotes.extend(biglist)
-    outfile.write(noquotations(nobrackets(','.join(map(str,setdoctorsnotes)))))
+    outfile.write(noquotations(nobrackets(','.join(map(str,setdoctorsnotes)).lower())))
     outfile.write('\n\n')
-    return nobrackets(noquotations(str(setdoctorsnotes)))
+    return nobrackets(noquotations(str(setdoctorsnotes).lower()))
+
 
 
 outfile = open('patienthistories.txt', 'w')
@@ -156,8 +203,8 @@ for doctorsnotes1 in range(3):
     d1 = gram1notes + gram2notes
     d2 = randomize(gram3notes + gram4notes)
     d3 = gram5notes + gram6notes + gram7notes
-    biglist = d1 + d2 + d3
-    print(make_notes(biglist))
+    full_list_1 = d1 + d2 + d3
+    print(make_notes(full_list_1))
 
 
 for doctorsnotes2 in range(3):
@@ -168,21 +215,96 @@ for doctorsnotes2 in range(3):
     gram7notes = grammar_notes(grammar7, n = 500, m = 1)
    
     
-    biglist = randomize(gram5notes + gram6notes + gram7notes)
-    print(make_notes(biglist))
+    full_list_2 = randomize(gram5notes + gram6notes + gram7notes)
+    print(make_notes(full_list_2))
+
+
+for doctorsnotes3 in range(2):
+    
+    
+    gram9notes = grammar_notes(grammar9, n = 100, m = 1)
+    gram10notes = grammar_notes(grammar10, n = 100, m= 1)
+    gram11notes = grammar_notes(grammar11, n = 100, m = 1)
+    gram12notes = grammar_notes(grammar12, n = 100, m = 1)
+    full_list_3 = gram9notes + gram10notes + gram11notes + gram12notes
+    
+    print(make_notes(full_list_3))
 
 
 outfile.close()
-
+'''
 #--------------------------------N-Gram Tagging----------------------------------------------#
 
-"""
-from nltk import word_tokenize
-from nltk.util import ngrams
 
-tokenized_notes = word_tokenize('IceCream.txt')
-ngramnotes = ngrams(tokenized_notes,2)
+from nltk import word_tokenize
+
+def generate_model(cfdist, word, num = 30):
+    for i in range(num):
+        print(word, end = ' ')
+        word = cfdist[word].max()
+
+f = open('SeniorThesis.txt', 'rU', encoding = 'utf8')
+raw = f.read()
+tokens = word_tokenize(raw)
+bigrams = list(nltk.bigrams(tokens))
+cfd = nltk.ConditionalFreqDist(bigrams)
+print(cfd['mentor'])
+generate_model(cfd, 'mentor')
+
+
+
+
+
+
+
+
+
+
+#--------------------------------Some Useless Trash I Guess I'm Still Keeping-----------------------------------#
+
+
+'''
+def ngrams(input, n):
+    input = word_tokenize(input)
+    output = {}
+    for i in range(len(input)-n+1):
+        g = ' '.join(input[i:i+n])
+        output.setdeafult(g,0)
+        output[g] += 1
+    return output
+
+text = open('IceCream.txt','r')
+print(ngrams(text, 2))
+
+text = open('IceCream.txt', 'r').read()
+table = string.maketrans(" ", " ")
+text = text.translate(Table, string.punctuation)
+tokens = word_tokenize(text.lower())
+bigram = nltk.bigrams(tokens)
+
+def word_grams(words):
+    s = []
+    for ngram in ngrams(words, 3):
+        s.append(' '.join(str(i) for i in ngram))
+    return str(s)
+ 
+print(word_grams(text))
+ 
+def prep_txt(txt):
+    f = open(txt,'r')
+    for word in f.read().split():
+        return word
+
+with open ('IceCream.txt', 'r') as f:
+    for line in f:
+        for word in line.split():
+            print(word_grams(word))
+
+txt = str('IceCream.txt')
+tokenized_notes = word_tokenize(txt)
+ngramnotes = ngrams('one two three four five',2)
 print(ngramnotes)
+
 
 starting_words = bigramnotes.generate(100)[-2:]
 print(' '.join(bigramnotes))
@@ -191,142 +313,4 @@ practicenotes = ngrams(3,tokenized_notes)
 starting_words = practicenotes.generate(100)
 newnotes = practicenotes.generate(starting_words)
 print(' '.join(newnotes))
-
-"""
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#-------------------------------Trash Storage---------------------------------#
-
-"""       
- gram1list = []  
-    for sentpieces1 in generate (grammar1, n =  10000):    
-        sents1 = nltk.sent_tokenize(' '.join(sentpieces1))
-        gram1list.insert(-1,sents1)
-        gram1finallist= []
-        if gram1finallist.count(sents1) is 0:
-            gram1finallist.extend(gram1list)
-    randomize(gram1finallist)   
-    gram1notes = gram1finallist[:10]
-    
-
-    gram2list = []
-    for sentpieces2 in generate (grammar2, n = 4):    
-        sents2 = nltk.sent_tokenize(' '.join(sentpieces2))
-        gram2list.insert(-1,sents2)
-        gram2finallist= []
-        if gram2finallist.count(sents2) is 0:
-            gram2finallist.extend(gram2list)
-    randomize(gram2finallist)  
-    gram2notes = gram2finallist[:3]   
-
-
-    gram3list = []
-    for sentpieces3 in generate (grammar3, n = 1):    
-        sents3 = nltk.sent_tokenize(' '.join(sentpieces3))
-        gram3list.insert(-1,sents3)
-        gram3finallist= []
-        if gram3finallist.count(sents3) is 0:
-            gram3finallist.extend(gram3list)
-    randomize(gram3finallist)
-    gram3notes = gram3finallist[:1]
-
-
-    gram4list = []
-    for sentpieces4 in generate (grammar4, n = 1):    
-        sents4 = nltk.sent_tokenize(' '.join(sentpieces4))
-        gram4list.insert(-1,sents4)
-        gram4finallist= []
-        if gram4finallist.count(sents3) is 0:
-            gram4finallist.extend(gram4list)
-    randomize(gram4finallist)
-    gram4notes = gram4finallist[:1]    
-    
-
-    gram5list = []  
-    for sentpieces5 in generate (grammar5, n =  500):    
-        sents5 = nltk.sent_tokenize(' '.join(sentpieces5))  
-        gram5list.insert(-1,sents5)
-        gram5finallist= []
-        if gram5finallist.count(sents5) is 0:
-            gram5finallist.extend(gram5list)
-    randomize(gram5finallist)
-    gram5notes = gram5finallist[:1]
-
-
-    gram6list = []  
-    for sentpieces6 in generate (grammar6, n =  500):    
-        sents6 = nltk.sent_tokenize(' '.join(sentpieces6))  
-        gram6list.insert(-1,sents6)
-        gram6finallist= []
-        if gram6finallist.count(sents6) is 0:
-            gram6finallist.extend(gram6list)
-    randomize(gram6finallist)
-    gram6notes = gram6finallist[:1]
-
-
-    gram7list = []
-    for sentpieces7 in generate (grammar7, n =  500):    
-        sents7 = nltk.sent_tokenize(' '.join(sentpieces7))  
-        gram7list.insert(-1,sents6)
-        gram7finallist= []
-        if gram7finallist.count(sents7) is 0:
-            gram7finallist.extend(gram7list)
-    randomize(gram7finallist)
-    gram7notes = gram7finallist[:1]
-
-
-
-
-    gram5list = []  
-    for sentpieces5 in generate (grammar5, n =  500):    
-        sents5 = nltk.sent_tokenize(' '.join(sentpieces5))  
-        gram5list.insert(-1,sents5)
-        gram5finallist= []
-        if gram5finallist.count(sents5) is 0:
-            gram5finallist.extend(gram5list)
-    randomize(gram5finallist)
-    gram5notes = gram5finallist[:1]
-
-
-    gram6list = []  
-    for sentpieces6 in generate (grammar6, n =  500):    
-        sents6 = nltk.sent_tokenize(' '.join(sentpieces6))  
-        gram6list.insert(-1,sents6)
-        gram6finallist= []
-        if gram6finallist.count(sents6) is 0:
-            gram6finallist.extend(gram6list)
-    randomize(gram6finallist)
-    gram6notes = gram6finallist[:1]
-
-
-    gram7list = []
-    for sentpieces7 in generate (grammar7, n =  500):    
-        sents7 = nltk.sent_tokenize(' '.join(sentpieces7))  
-        gram7list.insert(-1,sents6)
-        gram7finallist= []
-        if gram7finallist.count(sents7) is 0:
-            gram7finallist.extend(gram7list)
-    randomize(gram7finallist)
-    gram7notes = gram7finallist[:1]        
-    
-"""
+'''
