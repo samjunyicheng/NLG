@@ -133,7 +133,7 @@ ChronicDiag -> 'prostate cancer' |'bladder cancer' | 'hypertension'
 
 grammar12 = nltk.CFG.fromstring("""
 S3 -> NP VP
-NP -> 'grandparents' | 'grandfather' | 'gm'
+NP -> 'grandparents' | 'grandfather' | 'gm' | 'gf'
 VP -> 'has' Diag | Diagd 'with' Diag in 'ApproxAge' | Died
 Diagd -> 'Diagnosed' | 'Dxd' | 'Dxed'
 ApproxAge -> '70s' | '80s'| '90s' | 'late 70s' | 'late 60s' | 'late 50s'
@@ -144,15 +144,13 @@ Diag -> 'heart attack' | 'stroke'
 
 
 
-
-
 #------------------------------------------Doctors' Notes in New File-----------------------------------------------#
 
 def randomize(list):
     """Shuffle items in a list."""    
     random.shuffle(list)
     return list
-'''
+
 def nobrackets(str):
     """Remove brackets in a string."""
     return str.replace('[', ' ').replace(']','')
@@ -235,29 +233,40 @@ outfile.close()
 '''
 #--------------------------------N-Gram Tagging----------------------------------------------#
 
-
 from nltk import word_tokenize
+import heapq
 
 def generate_model(cfdist, word, num = 30):
     for i in range(num):
         print(word, end = ' ')
-        word = cfdist[word].max()
+        x = randomize(heapq.nlargest(10, cfdist, key = cfdist.get))[0]
+        word = x
 
-f = open('SeniorThesis.txt', 'rU', encoding = 'utf8')
+f = open('IceCream.txt', 'r', encoding = 'utf8')
 raw = f.read()
 tokens = word_tokenize(raw)
 bigrams = list(nltk.bigrams(tokens))
 cfd = nltk.ConditionalFreqDist(bigrams)
-print(cfd['mentor'])
-generate_model(cfd, 'mentor')
+print(cfd['they'])
+generate_model(cfd, 'they')
 
 
 
 
 
+def generate_model2(cfdist , word, num = 30):
+    for i in range(num):
+        print(word, end = ' ')
+        word = cfdist[word].max()
 
 
-
+f = open('SeniorThesis.txt', 'r', encoding = 'utf8')
+raw = f.read()
+tokens = word_tokenize(raw)
+bigrams = list(nltk.bigrams(tokens))
+cfd = nltk.ConditionalFreqDist(bigrams)
+print(cfd['he'])
+generate_model2(cfd, 'he')
 
 
 #--------------------------------Some Useless Trash I Guess I'm Still Keeping-----------------------------------#
