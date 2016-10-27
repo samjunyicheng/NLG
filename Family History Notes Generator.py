@@ -230,43 +230,6 @@ for doctorsnotes3 in range(2):
 
 
 outfile.close()
-'''
-#--------------------------------N-Gram Tagging----------------------------------------------#
-
-from nltk import word_tokenize
-import heapq
-
-def generate_model(cfdist, word, num = 30):
-    for i in range(num):
-        print(word, end = ' ')
-        x = randomize(heapq.nlargest(10, cfdist, key = cfdist.get))[0]
-        word = x
-
-f = open('IceCream.txt', 'r', encoding = 'utf8')
-raw = f.read()
-tokens = word_tokenize(raw)
-bigrams = list(nltk.bigrams(tokens))
-cfd = nltk.ConditionalFreqDist(bigrams)
-print(cfd['they'])
-generate_model(cfd, 'they')
-
-
-
-
-
-def generate_model2(cfdist , word, num = 30):
-    for i in range(num):
-        print(word, end = ' ')
-        word = cfdist[word].max()
-
-
-f = open('SeniorThesis.txt', 'r', encoding = 'utf8')
-raw = f.read()
-tokens = word_tokenize(raw)
-bigrams = list(nltk.bigrams(tokens))
-cfd = nltk.ConditionalFreqDist(bigrams)
-print(cfd['he'])
-generate_model2(cfd, 'he')
 
 
 #--------------------------------Some Useless Trash I Guess I'm Still Keeping-----------------------------------#
