@@ -7,6 +7,7 @@ Created on Wed Oct 26 10:42:18 2016
 
 import random
 
+'''Note- the generator should use the prior two words to select the next word, not use the current word to select the next word.'''
 
 class MarkovChain:
     
@@ -16,14 +17,13 @@ class MarkovChain:
     def _learn_key(self, key, value):
         if key not in self.memory:
             self.memory[key] = []
-        self.memory[key].append(value)        
+        self.memory[key].extend(value)        
         
     def learn(self, text):
         tokens = text.split(" ")
         trigrams = [(tokens[i], tokens[i + 1], tokens[i + 2]) for i in range(0, len(tokens) - 2)]
         for trigram in trigrams:
-            two_gram = trigram[1], trigram[2]
-            self._learn_key(trigram[0], two_gram[1])
+            self._learn_key(trigram[0], (trigram[1], trigram[2]))
 
     def _next(self, current_state):
         next_possible = self.memory.get(current_state)
@@ -31,23 +31,34 @@ class MarkovChain:
             next_possible = self.memory.keys()
         return random.sample(next_possible, 1)[0]
 
-    def generate_text(self, amount, state=''):
+    def generate_babble(self, amount, state=' '):
         if not amount:
             return state
         next_word = self._next(state)
-        return state + ' ' + self.generate_text(amount - 1, next_word)
+        return state + ' ' + self.generate_babble(amount - 1, next_word.lower())
 
 
 mc = MarkovChain()
-f = open('SeniorThesis.txt', 'r', encoding = 'utf8')
+
+
+f = open('SeniorThesis.txt', 'rU', encoding = 'utf8')
 raw = f.read()
 mc.learn(raw)
-print(mc.memory)
-newtext = mc.generate_text(amount = 500)
+'''print(mc.memory)'''
+
+outfile = open('Markovpatienthistories.txt', 'w')
+outfile.write('Markov Chain Text \n\n')
+
+for Markov_Notes in range(3):
+    
+    newtext = mc.generate_babble(50).replace("\n", "")
+    print(newtext)   
+    outfile.write(newtext)
+    outfile.write('\n\n')
 
 
 #---------------------------NLTK N-Gram Text Generation-------------------------------------------#
-
+'''
 
 import nltk
 from nltk import word_tokenize
@@ -90,36 +101,6 @@ bigrams = list(nltk.bigrams(tokens))
 cfd = nltk.ConditionalFreqDist(bigrams)
 print(cfd['he'])
 generate_model2(cfd, 'he')
-
-#-------------------------------Things that Don't Work--------------------------------------------------#
-'''
-def make_words(text):
-    f = open(text, 'r', encoding = 'utf8')
-    raw = f.read()
-    words = word_tokenize(raw)
-    return words
-
-def make_ngrams(text,n):
-    words = make_words(text)       
-    ngrams = list(nltk.ngrams(words, n))
-    return ngrams
-        
-def make_text(text, n, current_phrase):
-    words = make_words(text)
-    ngrams = make_ngrams(text, n)
-    text = []
-    if current_phrase == None:
-        current_phrase = random.choice(words)
-        next_phrase = random.sample(ngrams[current_phrase],1)[1]
-        ' ' .join(current_phrase,next_phrase)
-        current_phrase = next_phrase
-    else:
-        next_phrase = random.sample(ngrams[current_phrase],1)[1]
-        ' ' .join(current_phrase,next_phrase)                
-        current_phrase = next_phrase
-    return text
-
-print(make_text('IceCream.txt', 2, 'he'))
 '''
 #----------------------------What is Dis------------------------------------------------------------#
 '''

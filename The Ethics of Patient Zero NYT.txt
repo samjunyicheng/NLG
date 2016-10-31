@@ -1,0 +1,45 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1404\cocoasubrtf470
+{\fonttbl\f0\fnil\fcharset0 Georgia;}
+{\colortbl;\red255\green255\blue255;\red38\green38\blue38;\red39\green84\blue126;}
+\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720\partightenfactor0
+
+\f0\fs34 \cf2 \expnd0\expndtw0\kerning0
+The alleged \'93Patient Zero\'94 of the American \cf3 \ul \ulc3 AIDS\cf2 \ulnone  epidemic \'97 a French Canadian flight attendant named Ga\'e9tan Dugas, who died of AIDS in 1984 \'97 \cf3 \ul \ulc3 was exonerated\cf2 \ulnone  last week.\
+\
+Genetic \cf3 \ul \ulc3 sequencing of blood samples\cf2 \ulnone  stored since the 1970s showed that the strain infecting him had circulated among gay men in New York for several years before he arrived here in 1974. Therefore, although he had hundreds of sexual partners in several cities, he did not introduce the virus to North America; he was a victim before he was a vector.\
+\
+The revelation, some AIDS experts said, proved that the epidemic\'92s early days had been overshadowed by a witch hunt. Terrified Americans wanted someone to blame.\
+\
+Federal health officials said homosexuals, Haitians, \cf3 \ul \ulc3 hemophiliacs\cf2 \ulnone  and heroin users were all victims \'97 thus effectively calling them all carriers. Many individuals felt the sting of suspicion, including Ryan White, a 13-year-old hemophiliac bullied and barred from middle school after he contracted H.I.V. from a blood-clotting factor.\
+\
+Mr. Dugas\'92s name emerged when Randy Shilts, a journalist who himself later died of AIDS, published his best-selling history of the epidemic, \'93And the Band Played On.\'94 Through interviews, he found the real name of the mysterious \'93Patient O,\'94 for \'93outside California,\'94 in a study by the Centers for Disease Control and Prevention linking 40 men with AIDS on two coasts. Although Mr. Shilts never claimed that Mr. Dugas was the nation\'92s first case, alarmist journalism during his book publicity tour created the image of a libertine who, as one headline screamed, \'93Gave Us AIDS.\'94\
+\
+The debunking of the Dugas myth raises a moral question: Is it right to hunt down the first case in any outbreak, to find every Patient Zero?\
+That quest has become a regular feature of health journalism. We now know that \cf3 \ul \ulc3 a toddler playing in a bat-infested tree\cf2 \ulnone  in the Guinean village of Meliandou may have sent Ebola spinning across West Africa in 2014, and that a 5-year-old, \'c9dgar Hern\'e1ndez of La Gloria, Mexico, a pig-farming town, was probably \cf3 \ul \ulc3 the world\'92s first case of swine flu\cf2 \ulnone  in 2009.\
+Should they all be publicly named and vilified like Mary Mallon, the Irish cook who became known as Typhoid Mary and died after 23 years quarantined on an island in the East River in New York? Or like Dr. Craig Spencer, who caught Ebola through medical heroism in Africa, infected no one and \cf3 \ul \ulc3 yet was accused\cf2 \ulnone  of endangering all New York? Or like Kaci Hickox, the \'93Ebola nurse\'94 \cf3 \ul \ulc3 quarantined in New Jersey\cf2 \ulnone  though she didn\'92t even have Ebola?\
+\
+Of course not, many ethicists argue. They disapprove of stigmatizing any patient, and the best preventive is to not hunt one down.\
+But epidemiologists disagree. To them, it is vital to trace the source of every outbreak \'97 because that is often the only way to stop it.\
+\
+Not all pathogens carry stigma: Legionnaires\'92 disease, for example, spews out of cooling towers swarming with bacteria.\
+\
+Many diseases start in animals and leap to humans. Ebola jumps from bats and apes; MERS (Middle East Respiratory Syndrome) comes from camels; its cousin SARS (\cf3 \ul \ulc3 severe acute respiratory syndrome\cf2 \ulnone ) came from civets. \cf3 \ul \ulc3 Nipah virus\cf2 \ulnone  comes from pigs. The first human H.I.V. infection was probably in a hunter who cut himself while butchering a chimpanzee. The most lethal new flus, like H5N1 and H7N9, jump from birds \'97 ailments in chickens, ducks and wild swans have all led to human deaths.\
+\
+Finding the first human patient and determining what sickened him or her is often the only way to stop other humans from eating, petting, hunting or plucking the same animals.\
+\
+Also, not all vectors are the same. A few victims, for different reasons, become \'93superspreaders\'94 who infect far more people than average.\
+SARS escaped southern China when Dr. Liu Jianlun, a 64-year-old Guangdong resident visiting Hong Kong\'92s Metropole Hotel somehow \'97 possibly by \cf3 \ul \ulc3 vomiting\cf2 \ulnone  in a hallway \'97 infected several other travelers who then flew overseas, setting off outbreaks in Singapore, Vietnam and Canada.\
+\
+Superspreaders are also suspected in hospital-acquired infections. Doctors and other employees can carry dangerous staphylococcus germs in their noses or throats, feeling just fine and yet spewing them on patients.\
+\
+If superspreaders can be stopped in time, many lives can be saved. During his lifetime, Mr. Dugas, who had hundreds of partners, ignored more than one public health doctor who urged him to stop having unprotected sex.\
+\
+One was William Darrow, who led the 1984 C.D.C. investigation that inadvertently started the \'93Patient Zero\'94 myth. Mr. Dugas, he said, refused to believe that any \cf3 \ul \ulc3 cancer\cf2 \ulnone  \'97 including his Kaposi\'92s sarcoma \'97 was transmissible. Later, Mr. Shilts also ignored advice from Dr. Darrow to not name Mr. Dugas, who had died three years earlier.\
+But there are rare cases in which a living Patient Zero must be named in order to protect public health.\
+\
+Mary Mallon is the classic example. Her gall bladder teemed with the \cf3 \ul \ulc3 typhoid\cf2 \ulnone  bacterium, but she never felt sick, so, like Mr. Dugas, she refused to believe she was infectious, even after doctors discovered her condition when family after family fell ill soon after hiring her as a cook. After her first three-year quarantine, she was released after promising never again to work as a cook.\
+\
+But she soon changed her name (to Mary Brown, even though she had already been christened Typhoid Mary by The Journal of the American Medical Association) and went back to kitchens. By changing jobs often, she stayed ahead of disease detectives for five years until, as a cook at Sloane Hospital for Women, she infected 25 people, killing two of them.\
+Decisions about whether to find index patients, to release details like age or race or sexual or hygiene habits, and ultimately whether to name them, \'93are all about the need to know,\'94 Dr. Darrow said. \'93You weigh the potential harm against the potential benefit.\'94}
