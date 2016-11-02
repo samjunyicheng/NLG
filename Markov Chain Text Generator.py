@@ -7,7 +7,6 @@ Created on Wed Oct 26 10:42:18 2016
 
 import random
 
-'''Note- the generator should use the prior two words to select the next word, not use the current word to select the next word.'''
 
 class MarkovChain:
     
@@ -17,13 +16,14 @@ class MarkovChain:
     def _learn_key(self, key, value):
         if key not in self.memory:
             self.memory[key] = []
-        self.memory[key].extend(value)        
+        self.memory[key].append(value)
         
     def learn(self, text):
         tokens = text.split(" ")
         trigrams = [(tokens[i], tokens[i + 1], tokens[i + 2]) for i in range(0, len(tokens) - 2)]
         for trigram in trigrams:
-            self._learn_key(trigram[0], (trigram[1], trigram[2]))
+            value = ' '.join([trigram[1], trigram[2]])
+            self._learn_key(trigram[0], value)
 
     def _next(self, current_state):
         next_possible = self.memory.get(current_state)
@@ -44,7 +44,7 @@ mc = MarkovChain()
 f = open('SeniorThesis.txt', 'rU', encoding = 'utf8')
 raw = f.read()
 mc.learn(raw)
-'''print(mc.memory)'''
+"""print(mc.memory)"""
 
 outfile = open('Markovpatienthistories.txt', 'w')
 outfile.write('Markov Chain Text \n\n')
@@ -58,11 +58,11 @@ for Markov_Notes in range(3):
 
 
 #---------------------------NLTK N-Gram Text Generation-------------------------------------------#
-'''
+
 
 import nltk
 from nltk import word_tokenize
-from nltk import bigrams
+from nltk import bigrams, trigrams
 import heapq
 
 def randomize(list):
@@ -70,38 +70,35 @@ def randomize(list):
     random.shuffle(list)
     return list
 
+
 def generate_model(cfdist, word, num = 30):
+    print('\n')    
     for i in range(num):
         print(word, end = ' ')
         x = randomize(heapq.nlargest(10, cfdist, key = cfdist.get))[0]
         word = x
+        word.lower()
 
-f = open('IceCream.txt', 'r', encoding = 'utf8')
+f = open('IceCream.txt', 'rU', encoding = 'utf8')
 raw = f.read()
 tokens = word_tokenize(raw)
-bigrams = list(nltk.bigrams(tokens))
-cfd = nltk.ConditionalFreqDist(bigrams)
-print(cfd['they'])
-generate_model(cfd, 'they')
+
+
+bigr = list(bigrams(tokens))
+cfd = nltk.ConditionalFreqDist(bigr)
+print(cfd['frozen'])
+generate_model(cfd, 'frozen')
+
+
+trigr = list(trigrams(tokens))  
+condition_pairs = (((w0, w1), w2) for w0, w1, w2 in trigr)
+cfd2 = nltk.ConditionalFreqDist(condition_pairs)
+print(cfd['frozen'])
+generate_model(cfd,'frozen')
 
 
 
 
-
-def generate_model2(cfdist , word, num = 30):
-    for i in range(num):
-        print(word, end = ' ')
-        word = cfdist[word].max()
-
-
-f = open('SeniorThesis.txt', 'r', encoding = 'utf8')
-raw = f.read()
-tokens = word_tokenize(raw)
-bigrams = list(nltk.bigrams(tokens))
-cfd = nltk.ConditionalFreqDist(bigrams)
-print(cfd['he'])
-generate_model2(cfd, 'he')
-'''
 #----------------------------What is Dis------------------------------------------------------------#
 '''
       def create_chains(self, text, n): 
@@ -193,5 +190,12 @@ tokens = word_tokenize(raw)
 
 model = Markov.build_model(tokens, 3)
 print(Markov.generate(model, 3))
+
+
+def generate_model2(cfdist , word, num = 30):
+    for i in range(num):
+        print(word, end = ' ')
+        word = cfdist[word].max()
+
 
 '''
