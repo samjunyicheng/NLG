@@ -1,0 +1,142 @@
+Patient History Notes 
+
+
+
+PROBLEM 
+ 72 yo with diabetes
+
+PAST MEDICAL HISTORY 
+ alicia was previously diagnosed with high bp, patient was in good health until recently
+
+FAMILY HISTORY 
+  children alive and well,   mom and sophia smoke,  cousin and aunt allison smoke,  grandfather and grandma sophia are overweight
+
+SOCIAL HISTORY
+ patient is retired but previously a nurse, married for 10 years to a truck driver and lives with him, history of polysubstance abuse including heroin
+
+
+
+PROBLEM 
+ 83 yo patient presents with morbid obesity
+
+PAST MEDICAL HISTORY 
+ leslie was previously diagnosed with diabetes, patient was in good health until recently
+
+FAMILY HISTORY 
+  family history shows some risk,   aunt with gout
+
+SOCIAL HISTORY
+ patient is an elementary school vice principal, lives with husband, tobacco use: quit 10yrs ago
+
+
+
+PROBLEM 
+ 50 yo with hypertension
+
+PAST MEDICAL HISTORY 
+ katelyn was previously diagnosed with hypertension, patient was in good health until recently
+
+FAMILY HISTORY 
+  family history shows some risk,   grandma and grandfather were overweight,  cousin and grandma jennifer are overweight,  mom and grandma jamie smoked
+
+SOCIAL HISTORY
+ patient is a construction worker, married to a real estate agent and lives with him  3 kids, rarely drinks, only on certain social ocassions
+
+
+
+PROBLEM 
+ 63 yo patient presents with morbid obesity
+
+PAST MEDICAL HISTORY 
+ annie was previously seen for hypertension, vital signs show increased risk
+
+FAMILY HISTORY 
+ no family history of lung cancer
+
+SOCIAL HISTORY
+ patient is a middle school science teacher, lives with husband,  has history of alocholism, but quit 10 years ago,  smoked infrequently in the past and has stopped for several years now
+
+
+
+PROBLEM 
+ 81 yo patient presents with diabetes
+
+PAST MEDICAL HISTORY 
+ casey was previously seen for hypertension, labs unremarkable
+
+FAMILY HISTORY 
+  children alive and well,   2 siblings alive and well
+
+SOCIAL HISTORY
+ patient is retired but previously an acutary, lives with husband, tobacco use: never, alcohol use: no, drug use: no
+
+
+
+PROBLEM 
+ 76 yo patient presents with morbid obesity
+
+PAST MEDICAL HISTORY 
+ andrew was previously diagnosed with high cholesterol, labs unremarkable
+
+FAMILY HISTORY 
+  family history shows some risk,   on fathers side, there is history of obesity
+
+SOCIAL HISTORY
+ patient is a software engineer, she is married for 10 years to a health inspector and lives with him, tobacco use: quit 5 years ago
+
+
+
+PROBLEM 
+ 50 yo patient presents with diabetes
+
+PAST MEDICAL HISTORY 
+ joe was previously diagnosed with high bp, patient was in good health until recently
+
+FAMILY HISTORY 
+  family history shows some risk,   on mothers side, there is history of high bp
+
+SOCIAL HISTORY
+ patient is retired but previously a pharmaceutical drug salesman, lives with husband,  patient is a prior smoker but hasnt smoked in 20 years,  patient  no drug use,  has history of alocholism, but quit 8 years ago
+
+
+
+PROBLEM 
+ 80 yo with coronary artery disease
+
+PAST MEDICAL HISTORY 
+ connor was previously seen for high bp, patient was in good health until recently
+
+FAMILY HISTORY 
+  family history shows some risk,  
+
+SOCIAL HISTORY
+ patient is an office secretary, lives with husband, history of polysubstance abuse including heroin
+
+
+
+PROBLEM 
+ 50 yo patient presents with gallstones
+
+PAST MEDICAL HISTORY 
+ the patient was previously seen for high bp, patient was in good health until recently,  family history shows some risk,  
+
+FAMILY HISTORY 
+ noncontributory
+
+SOCIAL HISTORY
+ patient is retired but previously a nurse, married for 10 years to a firefigher and lives with him 2 kids
+
+
+
+PROBLEM 
+ 63 yo patient presents with gout
+
+PAST MEDICAL HISTORY 
+ michael was previously seen for high bp, labs unremarkable
+
+FAMILY HISTORY 
+ no family history of heart disease
+
+SOCIAL HISTORY
+ patient is a pharmaceutical drug salesman, married for 10 years to a firefigher and lives with him 2 kids
+
